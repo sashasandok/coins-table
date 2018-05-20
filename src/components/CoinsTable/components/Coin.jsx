@@ -25,7 +25,7 @@ export const Coin = props => {
       <Table.Cell style={{ textAlign: 'left' }}>{props.coin.name}</Table.Cell>
       <Table.Cell style={{ textAlign: 'left' }}>
         {!props.exchange[props.coin.symbol] ? (
-          <Loader active inline="centered" size="small" content="loading" />
+          <Loader active inline="centered" size="tiny" />
         ) : (
           <p>{props.exchange[props.coin.symbol]}</p>
         )}
