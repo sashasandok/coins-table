@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 import App from './components/App.jsx';
 
 // redux
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { Provider } from 'react-redux';
@@ -17,9 +17,10 @@ import reducers from './reducers/index';
 
 const middleware = [thunk];
 const devMiddleware = [logger];
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   reducers,
-  applyMiddleware(...[...middleware, ...devMiddleware])
+  composeEnhancers(applyMiddleware(...[...middleware, ...devMiddleware]))
 );
 
 const render = Component =>
